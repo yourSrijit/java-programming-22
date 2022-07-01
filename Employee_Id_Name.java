@@ -47,12 +47,24 @@ public class Employee_Id_Name {
         }
         return  null;
     }
+
+    public static Employee1 updateSalaryById(Employee1 []emp,int eid,int sal){
+        for(int i=0;i<emp.length;i++)
+        {
+            if(eid==emp[i].getId())
+            {   emp[i].setSalary(sal);
+                return emp[i];
+            }
+        }
+        return  null;
+    }
+
     public static void main(String[] args) {
         int i, n;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of employee");
         n = sc.nextInt();
-        Employee1 emp[] = new Employee1[n];
+        Employee1 []emp = new Employee1[n];
 
         try {
             for (i = 0; i < n; i++) {
@@ -97,6 +109,15 @@ public class Employee_Id_Name {
         catch (Exception C){
             System.out.println("Invalid Information");
         }
+
+        System.out.println("Enter the id for salary update");
+        int eid = sc.nextInt();
+        System.out.println("Enter the updated salary");
+        int sal =sc.nextInt();
+        Employee1 d = Employee_Id_Name.updateSalaryById(emp, eid,sal);
+        assert d != null;
+        System.out.println(d.getId() + "\t" + d.getName() + "\t" + d.getSalary());
+
 
 
     }
